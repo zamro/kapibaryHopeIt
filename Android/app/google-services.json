@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "98752340717",
+    "firebase_url": "https://hopeit-backend.firebaseio.com",
+    "project_id": "hopeit-backend",
+    "storage_bucket": "hopeit-backend.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:98752340717:android:39e0b83d899b8ad6",
+        "android_client_info": {
+          "package_name": "com.kapibary.naratunek"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "98752340717-li4ik1q5nb1ras9i57iuu1pnn4vl8l1j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAtU9OvDLMOOLFzPLtumxwjwovvJ4noRPY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
