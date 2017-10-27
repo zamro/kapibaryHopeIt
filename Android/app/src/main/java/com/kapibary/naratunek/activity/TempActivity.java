@@ -39,23 +39,6 @@ public class TempActivity extends AppCompatActivity {
         amountView = (AutoCompleteTextView) findViewById(R.id.amount);
         button = (Button) findViewById(R.id.button);
         mPaymentService = PaymentService.createInstance(this);
-
-        final FirebaseAuth auth = FirebaseAuth.getInstance();
-        auth.signInWithEmailAndPassword("test1@test.pl", "test1234").
-                addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            Toast.makeText(TempActivity.this, "Authentication success.",
-                                    Toast.LENGTH_SHORT).show();
-
-                        } else {
-                            Toast.makeText(TempActivity.this, "Authentication failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-
-                    }
-                });
     }
 
     @SuppressWarnings("unused")

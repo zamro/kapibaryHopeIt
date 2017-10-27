@@ -24,15 +24,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.HistoryActivity" />
+        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".activity.MessagesActivity" />
         <activity
             android:name=".activity.TempActivity"
-            android:label="Temp">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:label="Temp" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <!--PayU activities-->
         <activity android:name="com.payu.android.sdk.payment.ui.NewCardActivity" />
         <activity android:name="com.payu.android.sdk.payment.ui.PaymentMethodListActivity" />
         <activity
