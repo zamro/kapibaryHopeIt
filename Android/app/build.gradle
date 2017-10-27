@@ -1,6 +1,4 @@
 apply plugin: 'com.android.application'
-// Add to the bottom of the file
-
 
 android {
     compileSdkVersion 25
@@ -43,5 +41,13 @@ dependencies {
     compile 'com.google.firebase:firebase-auth:11.4.2'
     compile 'com.google.android.gms:play-services-auth:11.4.2'
     testCompile 'junit:junit:4.12'
+    compile('com.payu.android.sdk:payment-library-full:1.6.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
+    compile('com.payu.android.sdk:payment-library-widget:1.6.0') {
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'org.jetbrains', module: 'annotations'
+    }
     apply plugin: 'com.google.gms.google-services'
 }
