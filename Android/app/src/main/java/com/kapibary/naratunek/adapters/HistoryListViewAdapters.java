@@ -20,11 +20,9 @@ import java.util.ArrayList;
  */
 
 public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
-    private final Context context;
 
     public HistoryListViewAdapters(@NonNull Context context, ArrayList<HistoryEntity> history) {
         super(context,-1, history);
-        this.context = context;
         
     }
 

@@ -26,7 +26,7 @@ public class HistoryActivity extends AppCompatActivity {
 
 
         final ArrayList<HistoryEntity> list = new ArrayList<>();
-        list.add(new HistoryEntity("a", "b", "c"));
+        list.add(new HistoryEntity("Martyna 1k", "10.11.2017", "5zl"));
         listView = (ListView)findViewById(R.id.historyListView);
         HistoryListViewAdapters adapter = new HistoryListViewAdapters(this, list);
         listView.setAdapter(adapter);

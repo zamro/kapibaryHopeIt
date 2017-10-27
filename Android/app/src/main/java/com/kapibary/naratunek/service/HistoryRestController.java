@@ -2,8 +2,8 @@ package com.kapibary.naratunek.service;
 
 import android.util.Log;
 
-import com.studioidan.httpagent.HttpAgent;
-import com.studioidan.httpagent.JsonCallback;
+//import com.studioidan.httpagent.HttpAgent;
+//import com.studioidan.httpagent.JsonCallback;
 
 import org.json.JSONObject;
 
@@ -16,7 +16,7 @@ public class HistoryRestController {
 
 
 
-    public static void fetchHistory(){
+  /*  public static void fetchHistory(){
         HttpAgent.get("10.99.130.72:8080/api/donors")
                 .goJson(new JsonCallback() {
 
@@ -26,7 +26,7 @@ public class HistoryRestController {
                     }
 
                 });
-    }
+    } */
 
 
 }

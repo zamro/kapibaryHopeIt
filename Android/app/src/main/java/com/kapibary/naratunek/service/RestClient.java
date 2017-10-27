@@ -6,10 +6,10 @@ package com.kapibary.naratunek.service;
 
 
 
-import com.loopj.android.http.*;
+//import com.loopj.android.http.*;
 
 public class RestClient {
-    private static final String BASE_URL = "https://api.twitter.com/1/";
+    /*private static final String BASE_URL = "https://api.twitter.com/1/";
 
     private static AsyncHttpClient client = new AsyncHttpClient();
 
@@ -23,5 +23,5 @@ public class RestClient {
 
     private static String getAbsoluteUrl(String relativeUrl) {
         return BASE_URL + relativeUrl;
-    }
+    } */
 }
