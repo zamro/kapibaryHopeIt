@@ -34,16 +34,14 @@ public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        LayoutInflater inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View rowView = inflater.inflate(R.layout.history_list_item, parent, false);
         // Get the data item for this position
         HistoryEntity history = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            //convertView = LayoutInflater.from(getContext()).inflate(R.layout.calling_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.history_list_item, parent, false);
         }
 
-        initializeComponents(rowView);
+        initializeComponents(convertView);
 
         // Populate the data into the template view using the data object
         setComponents(history);
