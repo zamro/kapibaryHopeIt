@@ -5,15 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.kapibary.naratunek.activity.HistoryActivity">
+
     <ListView
+        android:id="@+id/historyListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.7"
-        >
-
-
-
-    </ListView>
+        />
 
  
 </LinearLayout>

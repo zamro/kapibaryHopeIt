@@ -20,9 +20,11 @@ import java.util.ArrayList;
  */
 
 public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
+    private final Context context;
 
-    public HistoryListViewAdapters(@NonNull Context context, @LayoutRes int resource, ArrayList<HistoryEntity> history) {
-        super(context, resource, history);
+    public HistoryListViewAdapters(@NonNull Context context, ArrayList<HistoryEntity> history) {
+        super(context,-1, history);
+        this.context = context;
         
     }
 
@@ -36,7 +38,7 @@ public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
         HistoryEntity history = getItem(position);
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            //convertView = LayoutInflater.from(getContext()).inflate(R.layout.calling_list_item, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.history_list_item, parent, false);
         }
 
         initializeComponents(convertView);
@@ -58,9 +60,9 @@ public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
     }
 
     private void setComponents(HistoryEntity historyEntity) {
-        challenge.setText("a");
-        date.setText("b");
-        sum.setText("c");
+        challenge.setText(historyEntity.getChallenge());
+        date.setText(historyEntity.getDate());
+        sum.setText(historyEntity.getSum());
     }
 
 
