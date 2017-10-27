@@ -1,4 +1,4 @@
-package com.kapibary.naratunek.rest;
+package com.kapibary.naratunek.service;
 
 /**
  * Created by slyboots on 10/27/17.

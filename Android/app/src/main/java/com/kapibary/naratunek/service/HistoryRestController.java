@@ -1,4 +1,4 @@
-package com.kapibary.naratunek.rest;
+package com.kapibary.naratunek.service;
 
 import android.util.Log;
 

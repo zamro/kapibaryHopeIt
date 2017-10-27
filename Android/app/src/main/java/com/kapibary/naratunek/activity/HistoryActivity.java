@@ -24,11 +24,13 @@ public class HistoryActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+
         final ArrayList<HistoryEntity> list = new ArrayList<>();
         list.add(new HistoryEntity("a", "b", "c"));
         listView = (ListView)findViewById(R.id.historyListView);
         HistoryListViewAdapters adapter = new HistoryListViewAdapters(this, list);
         listView.setAdapter(adapter);
+
     }
 
 }

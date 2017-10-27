@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+// Add to the bottom of the file
+
 
 android {
     compileSdkVersion 25
@@ -24,12 +26,22 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.3.1'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
-    testCompile 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/com.google.android/android
+    provided group: 'com.google.android', name: 'android', version: '4.1.1.4'
+// https://mvnrepository.com/artifact/com.ning/async-http-client
+    compile group: 'com.ning', name: 'async-http-client', version: '1.9.40'
     compile('com.payu.android.sdk:payment-library-full:1.6.0') {
         exclude group: 'com.android.support', module: 'support-v4'
         exclude group: 'org.jetbrains', module: 'annotations'
     }
+
+    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.studioidan.httpagent:httpagent:1.0.14@aar'
+    compile 'com.loopj.android:android-async-http:1.4.9'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.firebase:firebase-auth:11.4.2'
+    compile 'com.google.android.gms:play-services-auth:11.4.2'
+    testCompile 'junit:junit:4.12'
+    apply plugin: 'com.google.gms.google-services'
 }
