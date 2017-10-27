@@ -20,7 +20,7 @@
             android:id="@+id/amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Kwota"
+            android:hint="@string/amount"
             android:inputType="numberDecimal"
             android:maxLines="1"
             android:singleLine="true" />
@@ -28,7 +28,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <com.payu.android.sdk.payment.widget.PaymentMethodWidget
-        android:id="@+id/payment_method_widget "
+        android:id="@+id/payment_method_widget"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:background="@color/branding_dark"
         android:onClick="startPayment"
-        android:text="Płać"
+        android:text="@string/pay"
         android:textColor="@android:color/background_light" />
 
 </LinearLayout>

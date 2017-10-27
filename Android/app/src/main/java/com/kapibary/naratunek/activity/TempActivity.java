@@ -1,19 +1,20 @@
 package com.kapibary.naratunek.activity;
 
-import android.annotation.TargetApi;
-import android.os.Build;
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
+import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.kapibary.naratunek.R;
 import com.payu.android.sdk.payment.PaymentEventBus;
 import com.payu.android.sdk.payment.PaymentService;
@@ -25,20 +26,40 @@ import com.payu.android.sdk.payment.model.Currency;
 import com.payu.android.sdk.payment.model.Order;
 
 public class TempActivity extends AppCompatActivity {
-    AutoCompleteTextView amountView;
-    Button paymentButton;
-    boolean isPaymentSelected = false;
+    private AutoCompleteTextView amountView;
+    private Button button;
+    private boolean isPaymentSelected = false;
+    private PaymentService mPaymentService;
+    private final PaymentEventBus mPaymentEventBus = new PaymentEventBus();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temp);
         amountView = (AutoCompleteTextView) findViewById(R.id.amount);
-        paymentButton = (Button) findViewById(R.id.button);
+        button = (Button) findViewById(R.id.button);
         mPaymentService = PaymentService.createInstance(this);
+
+        final FirebaseAuth auth = FirebaseAuth.getInstance();
+        auth.signInWithEmailAndPassword("test1@test.pl", "test1234").
+                addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(TempActivity.this, "Authentication success.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        } else {
+                            Toast.makeText(TempActivity.this, "Authentication failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+                });
     }
 
-    void startPayment(View view) {
+    @SuppressWarnings("unused")
+    public void startPayment(View view) {
         if(!amountView.getText().toString().isEmpty() && isPaymentSelected) {
             Double amount = 100 * Double.valueOf(amountView.getText().toString());
             mPaymentService
@@ -47,33 +68,42 @@ public class TempActivity extends AppCompatActivity {
                             .withCurrency(Currency.PLN)
                             .withDescription("Example payment")
                             .build());
+            button.setEnabled(false);
         }
     }
-    private PaymentService mPaymentService;
-    private PaymentEventBus mPaymentEventBus = new PaymentEventBus();
+
     protected void onPause() {
         mPaymentEventBus.unregister(this);
         super.onPause();
     }
+
     protected void onResume() {
         super.onResume();
         mPaymentEventBus.register(this);
     }
-    public void onPaymentProcessEventBackgroundThread(PaymentSuccessEvent event) {
-        Log.d("DUPA", "Udało się" + event.getOrderId());
-        Snackbar.make(amountView, R.string.permission_rationale, 10);
+
+    @SuppressWarnings("unused")
+    public void onPaymentProcessEventMainThread(PaymentSuccessEvent event) {
+        Toast.makeText(TempActivity.this, "Płatność zakończona powodzeniem.",
+                Toast.LENGTH_SHORT).show();
+        button.setEnabled(true);
+        finish();
     }
-    public void onPaymentProcessEventBackgroundThread(PaymentFailedEvent event) {
-        Log.d("DUPA", "Nie udało się" + event.getBusinessError().toString());
-        Snackbar.make(amountView, "Failed", 10);
+
+    @SuppressWarnings("unused")
+    public void onPaymentProcessEventMainThread(PaymentFailedEvent event) {
+        Toast.makeText(TempActivity.this, "Płatność zakończona błędem. Pieniądze z konta nie zostały pobrane.",
+                Toast.LENGTH_SHORT).show();
+        button.setEnabled(true);
     }
+
+    @SuppressWarnings("unused")
     public void onPaymentProcessEventMainThread(PresentSelectedPaymentMethodEvent event) {
-        Log.d("DUPA", "PresentSelectedPaymentMethodEvent");
         isPaymentSelected = true;
     }
 
+    @SuppressWarnings("unused")
     public void onPaymentProcessEventMainThread(AbsentSelectedPaymentMethodEvent event) {
-        Log.d("DUPA", "AbsentSelectedPaymentMethodEvent");
         isPaymentSelected = false;
     }
 }

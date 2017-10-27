@@ -70,9 +70,6 @@ public class LoginActivity extends AppCompatActivity  {
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-
-
     }
 
     private void attemptLogin() {
@@ -166,12 +163,6 @@ public class LoginActivity extends AppCompatActivity  {
             mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
         }
     }
-
-
-
-
-
-
 
     private void classicSingIn(String login,String password){
 
