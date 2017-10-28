@@ -10,7 +10,7 @@
         android:id="@+id/challengeButton"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/challenges_part"
+        android:background="@drawable/challenges"
         android:onClick="onClick"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
@@ -51,7 +51,7 @@
         android:layout_height="120dp"
         android:onClick="onClick"
         android:orientation="horizontal"
-        android:background="@drawable/service_part"
+        android:background="@drawable/services"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp">
 
@@ -87,7 +87,7 @@
         android:id="@+id/rankButton"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="@drawable/ladder_part"
+        android:background="@drawable/ladder"
         android:onClick="onClick"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
@@ -126,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:onClick="onClick"
-        android:background="@drawable/prize_part"
+        android:background="@drawable/prizes"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
