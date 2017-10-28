@@ -53,18 +53,18 @@ public class ChallengesFragment extends ClickableFragment {
         RestClient.getArray("/user/challenges", new JsonArrayCallback() {
             @Override
             protected void onDone(boolean b, JSONArray jsonArray) {
+                list.clear();
                 if(b) {
-                    list.clear();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject obj = jsonArray.optJSONObject(i);
-                        list.add(new ChallengeEntity("name", 2000., "31.12.2017", true));
+                        list.add(new ChallengeEntity("name", 2000., "31.12.2017", true, 123.));
                     }
                 }
                 view.findViewById(R.id.progressBar3).setVisibility(View.INVISIBLE);
-                list.add(new ChallengeEntity("name", 2000., "31.12.2016", false));
-                list.add(new ChallengeEntity("name", 2000., "31.12.2017", true));
-                list.add(new ChallengeEntity("name", 2000., "31.12.2018", true));
-                list.add(new ChallengeEntity("name", 2000., "31.12.2019", true));
+                list.add(new ChallengeEntity("name", 2000., "31.12.2016", false, 1750.));
+                list.add(new ChallengeEntity("name", 2000., "31.12.2017", true, 500.));
+                list.add(new ChallengeEntity("name", 2000., "31.12.2018", true, 0.));
+                list.add(new ChallengeEntity("name", 2000., "31.12.2019", true, 0.));
                 adapter.notifyDataSetChanged();
             }
         });
@@ -83,6 +83,9 @@ public class ChallengesFragment extends ClickableFragment {
             @Override
             public void onDataClicked(int i, ChallengeEntity challengeEntity) {
                 ClickableFragment fragment = new JoinChallengeFragment();
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("challenge", challengeEntity);
+                fragment.setArguments(bundle);
                 ((MainActivity)getActivity()).setActiveFragment(fragment, "Dołącz do wyzwania");
             }
         });

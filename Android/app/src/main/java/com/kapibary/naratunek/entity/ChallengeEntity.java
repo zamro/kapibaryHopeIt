@@ -1,20 +1,20 @@
 package com.kapibary.naratunek.entity;
 
-/**
- * Created by slyboots on 10/27/17.
- */
+import java.io.Serializable;
 
-public class ChallengeEntity {
+public class ChallengeEntity implements Serializable{
     private String name;
     private Double amount;
     private String date;
     private boolean status;
+    private Double currentAmount;
 
-    public ChallengeEntity(String name, Double amount, String date, boolean status) {
+    public ChallengeEntity(String name, Double amount, String date, boolean status, Double currentAmount) {
         this.name = name;
         this.amount = amount;
         this.date = date;
         this.status = status;
+        this.currentAmount = currentAmount;
     }
 
     public String getName() {
@@ -22,6 +22,9 @@ public class ChallengeEntity {
     }
     public Double getAmount() {
         return amount;
+    }
+    public Double getCurrentAmount() {
+        return currentAmount;
     }
     public String getDate() {
         return date;
