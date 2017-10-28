@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile 'com.android.support:support-v4:25.3.1'
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
@@ -28,10 +29,6 @@ dependencies {
     provided group: 'com.google.android', name: 'android', version: '4.1.1.4'
 // https://mvnrepository.com/artifact/com.ning/async-http-client
     compile group: 'com.ning', name: 'async-http-client', version: '1.9.40'
-    compile('com.payu.android.sdk:payment-library-full:1.6.0') {
-        exclude group: 'com.android.support', module: 'support-v4'
-        exclude group: 'org.jetbrains', module: 'annotations'
-    }
 
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.android.support:design:25.3.1'
