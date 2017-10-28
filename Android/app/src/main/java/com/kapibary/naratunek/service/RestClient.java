@@ -1,27 +1,44 @@
 package com.kapibary.naratunek.service;
 
-/**
- * Created by slyboots on 10/27/17.
- */
+import com.google.firebase.auth.FirebaseAuth;
+import com.payu.android.sdk.payment.service.exception.ExternalRequestError;
+import com.studioidan.httpagent.HttpAgent;
+import com.studioidan.httpagent.JsonArrayCallback;
+import com.studioidan.httpagent.JsonCallback;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 
-
-//import com.loopj.android.http.*;
+import java.util.concurrent.ExecutionException;
 
 public class RestClient {
-    /*private static final String BASE_URL = "https://api.twitter.com/1/";
+    private static final FirebaseAuth auth = FirebaseAuth.getInstance();
+    private static final String serverUrl = "https://guarded-crag-45195.herokuapp.com/api";
 
-    private static AsyncHttpClient client = new AsyncHttpClient();
-
-    public static void get(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        client.get(getAbsoluteUrl(url), params, responseHandler);
+    private static HttpAgent get(String endpoint) {
+        String token = auth.getCurrentUser().getIdToken(false).getResult().getToken();
+        return HttpAgent.get(serverUrl + endpoint)
+                .headers("X-Authorization-Firebase", token);
     }
 
-    public static void post(String url, RequestParams params, AsyncHttpResponseHandler responseHandler) {
-        client.post(getAbsoluteUrl(url), params, responseHandler);
+    public static String getPayUAccesToken() throws ExternalRequestError {
+        try {
+            String json = get("/user/access-tokens/payu").execute().get();
+            return new JSONObject(json).getString("access_token");
+        } catch (InterruptedException | ExecutionException e) {
+            e.printStackTrace();
+            throw new ExternalRequestError(ExternalRequestError.ExternalErrorType.NETWORK_ERROR);
+        } catch(JSONException e)
+        {
+            e.printStackTrace();
+            throw new ExternalRequestError(ExternalRequestError.ExternalErrorType.SERVER_ERROR);
+        }
     }
 
-    private static String getAbsoluteUrl(String relativeUrl) {
-        return BASE_URL + relativeUrl;
-    } */
+    public static void get(String endpoint, JsonCallback callback){
+        get(endpoint).goJson(callback);
+    }
+    public static void getArray(String endpoint, JsonArrayCallback callback){
+        get(endpoint).goJsonArray(callback);
+    }
 }
