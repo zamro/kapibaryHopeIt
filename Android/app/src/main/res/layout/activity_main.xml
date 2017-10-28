@@ -26,9 +26,9 @@
 
         <RelativeLayout
             android:id="@+id/profileBox"
+            android:background="@drawable/light_red_gradient"
             android:layout_width="200dp"
             android:layout_height="100dp"
-            android:background="@color/material_blue_grey_800"
             android:padding="8dp" >
 
             <ImageView

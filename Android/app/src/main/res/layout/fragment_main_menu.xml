@@ -10,12 +10,13 @@
         android:id="@+id/challengeButton"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@drawable/challenges_part"
         android:onClick="onClick"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <ImageView
+        <!--ImageView
             android:id="@+id/challengeLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -25,6 +26,7 @@
         <LinearLayout
             android:layout_width="200dp"
             android:layout_height="120dp"
+            android:background="@drawable/challenges_part"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -39,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Dolacz do wyzwania lub utworz wlasne" />
-        </LinearLayout>
+        </LinearLayout-->
 
     </LinearLayout>
 
@@ -49,10 +51,11 @@
         android:layout_height="120dp"
         android:onClick="onClick"
         android:orientation="horizontal"
+        android:background="@drawable/service_part"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="8dp">
 
-        <ImageView
+        <!--ImageView
             android:id="@+id/servicesLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -76,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Wspomoz innych lub wykonaj usluge" />
-        </LinearLayout>
+        </LinearLayout-->
 
     </LinearLayout>
 
@@ -84,12 +87,13 @@
         android:id="@+id/rankButton"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:background="@drawable/ladder_part"
         android:onClick="onClick"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <ImageView
+        <!--ImageView
             android:id="@+id/ranksLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -113,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sprawdz ile masz punktow i historie wplat" />
-        </LinearLayout>
+        </LinearLayout-->
 
     </LinearLayout>
 
@@ -122,11 +126,12 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:onClick="onClick"
+        android:background="@drawable/prize_part"
         android:orientation="horizontal"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="8dp">
 
-        <ImageView
+        <!--ImageView
             android:id="@+id/prizesLogo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -151,7 +156,7 @@
                 android:layout_height="wrap_content"
                 android:text="wymieniaj punkty na nagrody" />
 
-        </LinearLayout>
+        </LinearLayout-->
 
     </LinearLayout>
 
