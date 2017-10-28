@@ -30,10 +30,11 @@ public class MerchantTokenProviderService extends TokenProviderService {
     @Override
     public MerchantOAuthAccessToken provideAccessToken() throws ExternalRequestError {
         String token = auth.getCurrentUser().getIdToken(false).getResult().getToken();
+        Log.d("MerchantTokenProvider", "token: " + token);
         String accesToken = "";
         try {
-            String json = HttpAgent.get("https://guarded-crag-45195.herokuapp.com/api/access-tokens/payu")
-                    .headers("X-Authorisation-Firebase", token).execute().get();
+            String json = HttpAgent.get("https://guarded-crag-45195.herokuapp.com/api/user/access-tokens/payu")
+                    .headers("X-Authorization-Firebase", token).execute().get();
             accesToken = new JSONObject(json).getString("access_token");
         } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
