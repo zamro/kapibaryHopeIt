@@ -1,18 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.kapibary.naratunek.activity.HistoryActivity">
-
-    <!--ListView
-        android:id="@+id/historyListView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0.7"
-        /-->
+    tools:context="com.kapibary.naratunek.Fragments.HistoryFragment">
 
     <EditText
         android:id="@+id/editText"
@@ -28,9 +19,4 @@
         android:layout_height="match_parent"
         table:tableView_columnCount="3" />
 
-
-
-
 </LinearLayout>
-
-

@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.kapibary.naratunek.Fragments.HistoryFragment;
 import com.kapibary.naratunek.Fragments.MainMenuFragment;
 import com.kapibary.naratunek.R;
 import com.kapibary.naratunek.adapters.MainDrawerListAdapter;
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private final Fragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new MessagesFragment(), new MessagesFragment()};
+    private final Fragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new HistoryFragment(), new MainMenuFragment()};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
         if(position == 4) {
