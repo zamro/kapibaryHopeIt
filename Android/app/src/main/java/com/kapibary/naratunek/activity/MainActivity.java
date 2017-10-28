@@ -99,9 +99,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void generateNavigationItems() {
         navigationItems = new ArrayList<>();
         navigationItems.add(new NavigationItem("Użytkownik", "Wrocław, Polska", 0)); //todo - localization - dynamic or from registration
-        navigationItems.add(new NavigationItem("Wiadomości", "", 0));
-        navigationItems.add(new NavigationItem("Historia wpłat", "", 0));
-        navigationItems.add(new NavigationItem("Ustawienia", "", 0));
+        navigationItems.add(new NavigationItem("Wiadomości", "", R.drawable.icons8_message));
+        navigationItems.add(new NavigationItem("Historia wpłat", "", R.drawable.icons8_payment_history));
+        navigationItems.add(new NavigationItem("Ustawienia", "", R.drawable.icons8_settings));
         navigationItems.add(new NavigationItem("TempPayment", "", 0));
     }
 
