@@ -82,9 +82,8 @@ public class ChallengesFragment extends ClickableFragment {
         tableView.addDataClickListener(new TableDataClickListener<ChallengeEntity>() {
             @Override
             public void onDataClicked(int i, ChallengeEntity challengeEntity) {
-//                ClickableFragment fragment = new ChallengesFragment();
-//                Log.d("ChooseChalengeFragment", "joinChallenge");
-//                ((MainActivity)getActivity()).setActiveFragment(fragment, "Aktywne wyzwania");
+                ClickableFragment fragment = new JoinChallengeFragment();
+                ((MainActivity)getActivity()).setActiveFragment(fragment, "Dołącz do wyzwania");
             }
         });
     }
