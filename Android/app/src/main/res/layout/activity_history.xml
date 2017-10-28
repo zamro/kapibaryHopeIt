@@ -22,11 +22,13 @@
         android:inputType="textPersonName"
         android:text="Szukaj" />
 
-    <de.codecrafters.tableview.TableView xmlns:table="http://schemas.android.com/apk/res-auto"
+    <de.codecrafters.tableview.SortableTableView xmlns:table="http://schemas.android.com/apk/res-auto"
         android:id="@+id/tableViewHistory"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         table:tableView_columnCount="3" />
+
+
 
 
 </LinearLayout>

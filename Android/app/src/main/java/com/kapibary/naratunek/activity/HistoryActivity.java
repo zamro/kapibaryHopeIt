@@ -13,7 +13,9 @@ import com.kapibary.naratunek.adapters.HistoryTableViewAdapter;
 import com.kapibary.naratunek.entity.HistoryEntity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 
+import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.TableView;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
@@ -32,10 +34,16 @@ public class HistoryActivity extends AppCompatActivity {
 
         final ArrayList<HistoryEntity> list = new ArrayList<>();
 
-        TableView tableView = (TableView)findViewById(R.id.tableViewHistory);
+        SortableTableView tableView = (SortableTableView)findViewById(R.id.tableViewHistory);
         tableView.setHeaderAdapter(new SimpleTableHeaderAdapter(this, TABLE_HEADERS));
-        list.add(new HistoryEntity("Martyna 1k", "10.11.2017", "5zl"));
+        tableView.setColumnComparator(0, new HistoryChallengeComparator());
+        tableView.setColumnComparator(2, new HistorySumComparator());
+
+        list.add(new HistoryEntity("Martyna 1k", "10.11.2017", "5"));
+        list.add(new HistoryEntity("Abecadlo", "12.11.2017", "50"));
         HistoryTableViewAdapter adapter = new HistoryTableViewAdapter(this, list);
+
+
         tableView.setDataAdapter(adapter);
         /*listView = (ListView)findViewById(R.id.historyListView);
         HistoryListViewAdapters adapter = new HistoryListViewAdapters(this, list);
@@ -44,4 +52,22 @@ public class HistoryActivity extends AppCompatActivity {
 
     }
 
+    private static class HistoryChallengeComparator implements Comparator<HistoryEntity> {
+
+        @Override
+        public int compare(HistoryEntity lh, HistoryEntity rh) {
+            return lh.getChallenge().compareTo(rh.getChallenge());
+        }
+    }
+
+    private static class HistorySumComparator implements Comparator<HistoryEntity> {
+
+        @Override
+        public int compare(HistoryEntity lh, HistoryEntity rh) {
+            return Integer.parseInt(lh.getSum())-Integer.parseInt(rh.getSum());
+        }
+    }
+
 }
+
+

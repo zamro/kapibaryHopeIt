@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.kapibary.naratunek.entity.HistoryEntity;
+import com.kapibary.naratunek.entity.ServiceEntity;
 
 import java.util.List;
 
@@ -15,27 +16,27 @@ import de.codecrafters.tableview.TableDataAdapter;
  * Created by mariusz on 28.10.17.
  */
 
-public class HistoryTableViewAdapter extends TableDataAdapter<HistoryEntity> {
+public class ServiceTableViewAdapter extends TableDataAdapter<ServiceEntity> {
 
-    public HistoryTableViewAdapter(Context context, List<HistoryEntity> data) {
+    public ServiceTableViewAdapter(Context context, List<ServiceEntity> data) {
         super(context, data);
 
     }
 
     @Override
     public View getCellView(int rowIndex, int columnIndex, ViewGroup viewGroup) {
-        HistoryEntity history = getRowData(rowIndex);
+        ServiceEntity service = getRowData(rowIndex);
         View renderedView = null;
 
         switch (columnIndex) {
             case 0:
-                renderedView = renderChallenge(history);
+                renderedView = renderServiceSubject(service);
                 break;
             case 1:
-                renderedView = renderDate(history);
+                renderedView = renderPrice(service);
                 break;
             case 2:
-                renderedView = renderSum(history);
+                renderedView = renderDeadline(service);
                 break;
         }
 
@@ -43,10 +44,10 @@ public class HistoryTableViewAdapter extends TableDataAdapter<HistoryEntity> {
     }
 
 
-    private View renderChallenge(final HistoryEntity history) {
+    private View renderServiceSubject(final ServiceEntity service) {
 
         final TextView textView = new TextView(getContext());
-        textView.setText(history.getChallenge());
+        textView.setText(service.getServiceSubject());
         //textView.setPadding(20, 10, 20, 10);
         //textView.setTextSize(TEXT_SIZE);
 
@@ -54,10 +55,10 @@ public class HistoryTableViewAdapter extends TableDataAdapter<HistoryEntity> {
         return textView;
     }
 
-    private View renderDate(final HistoryEntity history) {
+    private View renderPrice(final ServiceEntity service) {
 
         final TextView textView = new TextView(getContext());
-        textView.setText(history.getDate());
+        textView.setText(service.getPrice());
         //textView.setPadding(20, 10, 20, 10);
         //textView.setTextSize(TEXT_SIZE);
 
@@ -65,10 +66,10 @@ public class HistoryTableViewAdapter extends TableDataAdapter<HistoryEntity> {
         return textView;
     }
 
-    private View renderSum(final HistoryEntity history) {
+    private View renderDeadline(final ServiceEntity service) {
 
         final TextView textView = new TextView(getContext());
-        textView.setText(history.getSum()+"zł");
+        textView.setText(service.getDeadline());
         //textView.setPadding(20, 10, 20, 10);
         //textView.setTextSize(TEXT_SIZE);
 
