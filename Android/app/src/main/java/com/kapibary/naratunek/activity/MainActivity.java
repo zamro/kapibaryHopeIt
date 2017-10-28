@@ -1,5 +1,7 @@
 package com.kapibary.naratunek.activity;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.kapibary.naratunek.MainMenuFragment;
 import com.kapibary.naratunek.R;
 import com.kapibary.naratunek.adapters.MainDrawerListAdapter;
 import com.kapibary.naratunek.entity.NavigationItem;
@@ -20,7 +23,7 @@ import com.kapibary.naratunek.entity.NavigationItem;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-
+    private final FragmentManager fragmentManager = getFragmentManager();
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -115,19 +118,23 @@ public class MainActivity extends AppCompatActivity {
     private final Class[] activities = {MainActivity.class, MessagesActivity.class, HistoryActivity.class, TempActivity.class};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
-        Intent i = new Intent(this, activities[position]);
-        startActivity(i);
-        /*Fragment fragment = new PreferencesFragment();
+        if(position == 3) {
+            Intent i = new Intent(this, TempActivity.class);
+            startActivity(i);
+        }
+        else
+        {
+            Fragment fragment = new MainMenuFragment();
 
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, fragment)
-                .commit();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment)
+                    .commit();
 
-        mDrawerList.setItemChecked(position, true);
-        setTitle(navigationItems.get(position).getmTitle());
+            mDrawerList.setItemChecked(position, true);
+            setTitle(navigationItems.get(position).getmTitle());
 
-        // Close the drawer
-        mDrawerLayout.closeDrawer(mDrawerPane); */
+            // Close the drawer
+            mDrawerLayout.closeDrawers();
+        }
     }
 }

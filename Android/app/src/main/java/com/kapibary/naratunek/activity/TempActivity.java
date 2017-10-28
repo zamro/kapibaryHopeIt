@@ -50,6 +50,7 @@ public class TempActivity extends AppCompatActivity {
                             .withAmount(amount.longValue())
                             .withCurrency(Currency.PLN)
                             .withDescription("Example payment")
+                            .withNotifyUrl("https://guarded-crag-45195.herokuapp.com/api/payments")
                             .build());
             button.setEnabled(false);
         }
