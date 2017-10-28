@@ -9,8 +9,8 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.kapibary.naratunek.R;
-import com.kapibary.naratunek.entity.HistoryEntity;
 import com.kapibary.naratunek.entity.MessageEntity;
+import com.kapibary.naratunek.entity.PrizeEntity;
 
 import java.util.ArrayList;
 
@@ -18,46 +18,44 @@ import java.util.ArrayList;
  * Created by mariusz on 27.10.17.
  */
 
-public class MessagesListViewAdapters extends ArrayAdapter <MessageEntity> {
+public class PrizesListViewAdapter extends ArrayAdapter <PrizeEntity> {
 
-        public MessagesListViewAdapters(@NonNull Context context, ArrayList<MessageEntity> messages) {
-            super(context,-1, messages);
+        public PrizesListViewAdapter(@NonNull Context context, ArrayList<PrizeEntity> prizes) {
+            super(context,-1, prizes);
 
         }
 
-        TextView message, receiveTime, name;
+        TextView name, points;
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
             // Get the data item for this position
-            MessageEntity message = getItem(position);
+            PrizeEntity prize = getItem(position);
             // Check if an existing view is being reused, otherwise inflate the view
             if (convertView == null) {
-                convertView = LayoutInflater.from(getContext()).inflate(R.layout.message_list_item, parent, false);
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.prize_list_item, parent, false);
             }
 
             initializeComponents(convertView);
 
             // Populate the data into the template view using the data object
-            setComponents(message);
+            setComponents(prize);
 
             // Return the completed view to render on screen
             return convertView;
         }
 
         private void initializeComponents(View view) {
-            message = (TextView) view.findViewById(R.id.message);
-            receiveTime = (TextView) view.findViewById(R.id.receiveTime);
-            name = (TextView) view.findViewById(R.id.name);
+            points = (TextView) view.findViewById(R.id.points);
+            name = (TextView) view.findViewById(R.id.prize_name);
 
             //pendingLayout = (LinearLayout) view.findViewById(R.id.pending_layout);
             //inProgressLayout = (LinearLayout) view.findViewById(R.id.in_progress_layout);
         }
 
-        private void setComponents(MessageEntity messageEntity) {
-            message.setText(messageEntity.getMessage());
-            receiveTime.setText(messageEntity.getReceiveTime());
-            name.setText(messageEntity.getName());
+        private void setComponents(PrizeEntity prizeEntity) {
+            points.setText(prizeEntity.getPoints()+" pkt.");
+            name.setText(prizeEntity.getName());
         }
 
 

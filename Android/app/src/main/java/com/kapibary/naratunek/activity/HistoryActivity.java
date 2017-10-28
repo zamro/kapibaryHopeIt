@@ -40,6 +40,7 @@ public class HistoryActivity extends AppCompatActivity {
         tableView.setColumnComparator(2, new HistorySumComparator());
 
         list.add(new HistoryEntity("Martyna 1k", "10.11.2017", "5"));
+
         list.add(new HistoryEntity("Abecadlo", "12.11.2017", "50"));
         HistoryTableViewAdapter adapter = new HistoryTableViewAdapter(this, list);
 
