@@ -11,14 +11,7 @@
     <RelativeLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
-
-        <fragment android:name="com.kapibary.naratunek.MainMenuFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-    </RelativeLayout>
-
+        android:layout_height="match_parent" />
 
 <!-- drawer frame -->
 

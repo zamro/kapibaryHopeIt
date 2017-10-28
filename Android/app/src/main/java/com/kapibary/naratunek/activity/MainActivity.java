@@ -15,9 +15,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.kapibary.naratunek.MainMenuFragment;
+import com.kapibary.naratunek.Fragments.MainMenuFragment;
 import com.kapibary.naratunek.R;
 import com.kapibary.naratunek.adapters.MainDrawerListAdapter;
+import com.kapibary.naratunek.Fragments.MessagesFragment;
 import com.kapibary.naratunek.entity.NavigationItem;
 
 import java.util.ArrayList;
@@ -84,6 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 selectItemFromDrawer(position);
             }
         });
+
+        Fragment fragment = new MainMenuFragment();
+        fragmentManager.beginTransaction()
+                .replace(R.id.content_frame, fragment)
+                .commit();
     }
 
     private void generateNavigationItems() {
@@ -92,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
         navigationItems.add(new NavigationItem("Wiadomości", "", 0));
         navigationItems.add(new NavigationItem("Historia wpłat", "", 0));
         navigationItems.add(new NavigationItem("Ustawienia", "", 0));
+        navigationItems.add(new NavigationItem("TempPayment", "", 0));
     }
 
     @Override
@@ -115,19 +122,17 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private final Class[] activities = {MainActivity.class, MessagesActivity.class, HistoryActivity.class, TempActivity.class};
+    private final Fragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new MessagesFragment(), new MessagesFragment()};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
-        if(position == 3) {
+        if(position == 4) {
             Intent i = new Intent(this, TempActivity.class);
             startActivity(i);
         }
         else
         {
-            Fragment fragment = new MainMenuFragment();
-
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragment)
+                    .replace(R.id.content_frame, fragments[position])
                     .commit();
 
             mDrawerList.setItemChecked(position, true);

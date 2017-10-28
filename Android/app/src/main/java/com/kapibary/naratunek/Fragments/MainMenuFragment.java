@@ -1,4 +1,4 @@
-package com.kapibary.naratunek;
+package com.kapibary.naratunek.Fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.kapibary.naratunek.R;
 
 
 /**

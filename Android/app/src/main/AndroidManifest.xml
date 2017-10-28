@@ -25,7 +25,6 @@
         </activity>
         <activity android:name=".activity.HistoryActivity" />
         <activity android:name=".activity.MainActivity" />
-        <activity android:name=".activity.MessagesActivity" />
         <activity
             android:name=".activity.TempActivity"
             android:label="Temp" />
