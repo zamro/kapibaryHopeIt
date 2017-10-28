@@ -6,7 +6,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+
 import com.kapibary.naratunek.R;
+import com.kapibary.naratunek.activity.MainActivity;
 
 public class MainMenuFragment extends ClickableFragment{
     public MainMenuFragment() {
@@ -15,9 +18,14 @@ public class MainMenuFragment extends ClickableFragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.d("MainMenuFragment", "onCreateView");
         return inflater.inflate(R.layout.fragment_main_menu, container, false);
     }
-
+    @Override
+    public void onViewCreated(final View view, Bundle savedInstanceState) {
+        Log.d("MainMenuFragment", "onViewCreated");
+        ((MainActivity)getActivity()).setActiveFragment(this);
+    }
     @Override
     public void onClick(View v) {
         switch (v.getId()) {

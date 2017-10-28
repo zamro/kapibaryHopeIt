@@ -3,16 +3,14 @@ package com.kapibary.naratunek.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import com.kapibary.naratunek.R;
+import com.kapibary.naratunek.activity.MainActivity;
 import com.kapibary.naratunek.adapters.HistoryTableViewAdapter;
 import com.kapibary.naratunek.entity.HistoryEntity;
-import com.kapibary.naratunek.entity.MessageEntity;
 import com.kapibary.naratunek.service.RestClient;
 import com.studioidan.httpagent.JsonArrayCallback;
 
@@ -61,6 +59,7 @@ public class HistoryFragment extends ClickableFragment {
         tableView.setColumnComparator(2, new HistorySumComparator());
         adapter = new HistoryTableViewAdapter(view.getContext(), list);
         tableView.setDataAdapter(adapter);
+        ((MainActivity)getActivity()).setActiveFragment(this);
     }
 
     @Override

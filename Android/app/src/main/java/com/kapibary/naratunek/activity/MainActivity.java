@@ -26,7 +26,7 @@ import com.kapibary.naratunek.entity.NavigationItem;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, FragmentManager.OnBackStackChangedListener {
     private final FragmentManager fragmentManager = getFragmentManager();
     private ClickableFragment mActiveFragment;
     private ListView mDrawerList;
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             public void onDrawerClosed(View view) {
                 super.onDrawerClosed(view);
                 invalidateOptionsMenu();
-                mActionBar.setTitle("Na Ratunek");
+                mActionBar.setTitle(mActiveFragment.getTag());
             }
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
@@ -91,8 +91,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         mActiveFragment = new MainMenuFragment();
+        fragmentManager.addOnBackStackChangedListener(this);
         fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, mActiveFragment)
+                .replace(R.id.content_frame, mActiveFragment, "Na Ratunek")
                 .commit();
     }
 
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private final ClickableFragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new HistoryFragment(), new MainMenuFragment()};
+    private final ClickableFragment[] fragments = {null, new MessagesFragment(), new HistoryFragment(), null};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
         if(position == 4) {
@@ -136,19 +137,28 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else
         {
             mActiveFragment = fragments[position];
-            fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, mActiveFragment)
-                    .commit();
-
-            mDrawerList.setItemChecked(position, true);
-            setTitle(navigationItems.get(position).getmTitle());
-
-            mDrawerLayout.closeDrawers();
+            if(mActiveFragment != null) {
+                fragmentManager.beginTransaction()
+                        .replace(R.id.content_frame, mActiveFragment, navigationItems.get(position).getmTitle())
+                        .addToBackStack(null)
+                        .commit();
+                mDrawerLayout.closeDrawers();
+            }
         }
     }
 
     @Override
     public void onClick(View v) {
         mActiveFragment.onClick(v);
+    }
+
+    @Override
+    public void onBackStackChanged() {
+        invalidateOptionsMenu();
+        mActionBar.setTitle(mActiveFragment.getTag());
+    }
+
+    public void setActiveFragment(ClickableFragment fragment){
+        mActiveFragment = fragment;
     }
 }

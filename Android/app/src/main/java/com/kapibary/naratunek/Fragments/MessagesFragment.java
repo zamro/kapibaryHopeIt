@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import com.kapibary.naratunek.R;
+import com.kapibary.naratunek.activity.MainActivity;
 import com.kapibary.naratunek.adapters.MessagesListViewAdapters;
 import com.kapibary.naratunek.entity.MessageEntity;
 import com.kapibary.naratunek.service.RestClient;
@@ -52,6 +53,7 @@ public class MessagesFragment extends ClickableFragment {
         listView = (ListView)view.findViewById(R.id.messagesListView);
         adapter = new MessagesListViewAdapters(view.getContext(), list);
         listView.setAdapter(adapter);
+        ((MainActivity)getActivity()).setActiveFragment(this);
     }
 
     @Override
