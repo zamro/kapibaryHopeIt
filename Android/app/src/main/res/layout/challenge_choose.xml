@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kapibary.naratunek.Fragments.ChooseChalengeFragment">
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/myChallenges"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:background="@drawable/challenge_topbox"
         android:text="" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/joinChallenge"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:background="@drawable/challenges_bottombox"
         android:text="" />
-</LinearLayout>
+</FrameLayout>

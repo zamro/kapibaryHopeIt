@@ -9,15 +9,15 @@ import android.view.ViewGroup;
 import com.kapibary.naratunek.R;
 import com.kapibary.naratunek.activity.MainActivity;
 
-public class MainMenuFragment extends ClickableFragment{
-    public MainMenuFragment() {
+public class ChooseChalengeFragment extends ClickableFragment{
+    public ChooseChalengeFragment() {
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d("MainMenuFragment", "onCreateView");
-        return inflater.inflate(R.layout.fragment_main_menu, container, false);
+        return inflater.inflate(R.layout.challenge_choose, container, false);
     }
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
@@ -28,17 +28,10 @@ public class MainMenuFragment extends ClickableFragment{
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.challengeButton:
-                ChooseChalengeFragment fragment = new ChooseChalengeFragment();
-                ((MainActivity)getActivity()).setActiveFragment(fragment, "Wyzwania");
+                Log.d("ChooseChalengeFragment", "myChallenges");
                 break;
             case R.id.serviceButton:
-                Log.d("MainMenuFragment", "serviceButton");
-                break;
-            case R.id.rankButton:
-                Log.d("MainMenuFragment", "rankButton");
-                break;
-            case R.id.prizesButton:
-                Log.d("MainMenuFragment", "prizesButton");
+                Log.d("ChooseChalengeFragment", "joinChallenge");
                 break;
         }
     }

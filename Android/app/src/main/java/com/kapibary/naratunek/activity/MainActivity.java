@@ -136,14 +136,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else
         {
-            mActiveFragment = fragments[position];
-            if(mActiveFragment != null) {
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame, mActiveFragment, navigationItems.get(position).getmTitle())
-                        .addToBackStack(null)
-                        .commit();
-                mDrawerLayout.closeDrawers();
-            }
+            ClickableFragment fragment = fragments[position];
+            String tag = navigationItems.get(position).getmTitle();
+            setActiveFragment(fragment, tag);
+        }
+    }
+
+    public void setActiveFragment(ClickableFragment fragment, String tag) {
+        mActiveFragment = fragment;
+        if(mActiveFragment != null) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, mActiveFragment, tag)
+                    .addToBackStack(null)
+                    .commit();
+            mDrawerLayout.closeDrawers();
         }
     }
 
