@@ -5,9 +5,10 @@ package com.kapibary.naratunek.entity;
  */
 
 public class HistoryEntity {
-    private String challenge, date, sum;
+    private String challenge, date;
+    private Double sum;
 
-    public HistoryEntity(String challenge, String date, String sum) {
+    public HistoryEntity(String challenge, String date, Double sum) {
         this.challenge = challenge;
         this.date = date;
         this.sum = sum;
@@ -22,7 +23,7 @@ public class HistoryEntity {
         return date;
     }
 
-    public String getSum() {
+    public Double getSum() {
         return sum;
     }
 }

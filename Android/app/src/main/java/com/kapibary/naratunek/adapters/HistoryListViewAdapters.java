@@ -60,7 +60,7 @@ public class HistoryListViewAdapters extends ArrayAdapter<HistoryEntity> {
     private void setComponents(HistoryEntity historyEntity) {
         challenge.setText(historyEntity.getChallenge());
         date.setText(historyEntity.getDate());
-        sum.setText(historyEntity.getSum());
+        sum.setText(historyEntity.getSum().toString());
     }
 
 
