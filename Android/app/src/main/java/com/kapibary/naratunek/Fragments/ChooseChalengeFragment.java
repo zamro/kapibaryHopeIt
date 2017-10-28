@@ -27,11 +27,13 @@ public class ChooseChalengeFragment extends ClickableFragment{
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.challengeButton:
-                Log.d("ChooseChalengeFragment", "myChallenges");
-                break;
-            case R.id.serviceButton:
+            case R.id.joinChallenge:
+                ClickableFragment fragment = new ChallengesFragment();
                 Log.d("ChooseChalengeFragment", "joinChallenge");
+                ((MainActivity)getActivity()).setActiveFragment(fragment, "Aktywne wyzwania");
+                break;
+            case R.id.myChallenges:
+                Log.d("ChooseChalengeFragment", "myChallenges");
                 break;
         }
     }

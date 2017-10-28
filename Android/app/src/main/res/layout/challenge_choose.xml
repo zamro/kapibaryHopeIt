@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:background="@drawable/challenge_topbox"
+        android:onClick="onClick"
         android:text="" />
 
     <Button
@@ -18,5 +19,6 @@
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:background="@drawable/challenges_bottombox"
+        android:onClick="onClick"
         android:text="" />
 </LinearLayout>
