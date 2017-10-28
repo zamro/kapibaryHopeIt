@@ -18,7 +18,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MessagesFragment extends Fragment {
+public class MessagesFragment extends ClickableFragment {
     private ListView listView;
     public MessagesFragment() {
     }
@@ -36,5 +36,9 @@ public class MessagesFragment extends Fragment {
         listView = (ListView)view.findViewById(R.id.messagesListView);
         MessagesListViewAdapters adapter = new MessagesListViewAdapters(view.getContext(), list);
         listView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
     }
 }

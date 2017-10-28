@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.kapibary.naratunek.Fragments.ClickableFragment;
 import com.kapibary.naratunek.Fragments.HistoryFragment;
 import com.kapibary.naratunek.Fragments.MainMenuFragment;
 import com.kapibary.naratunek.R;
@@ -24,8 +25,9 @@ import com.kapibary.naratunek.entity.NavigationItem;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private final FragmentManager fragmentManager = getFragmentManager();
+    private ClickableFragment mActiveFragment;
     private ListView mDrawerList;
     private ActionBarDrawerToggle mDrawerToggle;
     private DrawerLayout mDrawerLayout;
@@ -87,9 +89,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        Fragment fragment = new MainMenuFragment();
+        mActiveFragment = new MainMenuFragment();
         fragmentManager.beginTransaction()
-                .replace(R.id.content_frame, fragment)
+                .replace(R.id.content_frame, mActiveFragment)
                 .commit();
     }
 
@@ -123,7 +125,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private final Fragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new HistoryFragment(), new MainMenuFragment()};
+    private final ClickableFragment[] fragments = {new MainMenuFragment(), new MessagesFragment(), new HistoryFragment(), new MainMenuFragment()};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
         if(position == 4) {
@@ -132,15 +134,20 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
+            mActiveFragment = fragments[position];
             fragmentManager.beginTransaction()
-                    .replace(R.id.content_frame, fragments[position])
+                    .replace(R.id.content_frame, mActiveFragment)
                     .commit();
 
             mDrawerList.setItemChecked(position, true);
             setTitle(navigationItems.get(position).getmTitle());
 
-            // Close the drawer
             mDrawerLayout.closeDrawers();
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        mActiveFragment.onClick(v);
     }
 }

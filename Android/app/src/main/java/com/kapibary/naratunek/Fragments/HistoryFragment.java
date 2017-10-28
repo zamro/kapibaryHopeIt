@@ -20,7 +20,7 @@ import de.codecrafters.tableview.SortableTableView;
 import de.codecrafters.tableview.toolkit.SimpleTableHeaderAdapter;
 
 
-public class HistoryFragment extends Fragment {
+public class HistoryFragment extends ClickableFragment {
     private static final String[] TABLE_HEADERS = { "Wyzwanie", "Data", "Kwota" };
 
     public HistoryFragment() {
@@ -46,6 +46,10 @@ public class HistoryFragment extends Fragment {
         HistoryTableViewAdapter adapter = new HistoryTableViewAdapter(view.getContext(), list);
 
         tableView.setDataAdapter(adapter);
+    }
+
+    @Override
+    public void onClick(View v) {
     }
 
     private static class HistoryChallengeComparator implements Comparator<HistoryEntity> {
