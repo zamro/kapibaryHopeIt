@@ -43,7 +43,7 @@ public class MerchantTokenProviderService extends TokenProviderService {
             e.printStackTrace();
             throw new ExternalRequestError(ExternalRequestError.ExternalErrorType.SERVER_ERROR);
         }
-        Log.d("MerchantTokenProviderService", "accesToken: " + accesToken);
+        Log.d("MerchantTokenProvider", "accesToken: " + accesToken);
         return new MerchantOAuthAccessToken(accesToken);
     }
 }
