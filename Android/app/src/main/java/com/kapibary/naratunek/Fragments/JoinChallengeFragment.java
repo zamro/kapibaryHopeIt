@@ -9,12 +9,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.kapibary.naratunek.R;
-import com.kapibary.naratunek.activity.TempActivity;
+import com.kapibary.naratunek.activity.PayUActivity;
 import com.kapibary.naratunek.entity.ChallengeEntity;
 
 public class JoinChallengeFragment extends ClickableFragment {
@@ -40,7 +39,7 @@ public class JoinChallengeFragment extends ClickableFragment {
     }
     @Override
     public void onClick(View v) {
-        Intent i = new Intent(getView().getContext(), TempActivity.class);
+        Intent i = new Intent(getView().getContext(), PayUActivity.class);
         startActivity(i);
     }
 }

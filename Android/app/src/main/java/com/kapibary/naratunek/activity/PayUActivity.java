@@ -1,20 +1,12 @@
 package com.kapibary.naratunek.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
 import com.kapibary.naratunek.R;
 import com.payu.android.sdk.payment.PaymentEventBus;
 import com.payu.android.sdk.payment.PaymentService;
@@ -25,7 +17,7 @@ import com.payu.android.sdk.payment.event.PresentSelectedPaymentMethodEvent;
 import com.payu.android.sdk.payment.model.Currency;
 import com.payu.android.sdk.payment.model.Order;
 
-public class TempActivity extends AppCompatActivity {
+public class PayUActivity extends AppCompatActivity {
     private AutoCompleteTextView amountView;
     private Button button;
     private boolean isPaymentSelected = false;
@@ -68,7 +60,7 @@ public class TempActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     public void onPaymentProcessEventMainThread(PaymentSuccessEvent event) {
-        Toast.makeText(TempActivity.this, "Płatność zakończona powodzeniem.",
+        Toast.makeText(PayUActivity.this, "Płatność zakończona powodzeniem.",
                 Toast.LENGTH_SHORT).show();
         button.setEnabled(true);
         finish();
@@ -76,7 +68,7 @@ public class TempActivity extends AppCompatActivity {
 
     @SuppressWarnings("unused")
     public void onPaymentProcessEventMainThread(PaymentFailedEvent event) {
-        Toast.makeText(TempActivity.this, "Płatność zakończona błędem. Pieniądze z konta nie zostały pobrane.",
+        Toast.makeText(PayUActivity.this, "Płatność zakończona błędem. Pieniądze z konta nie zostały pobrane.",
                 Toast.LENGTH_SHORT).show();
         button.setEnabled(true);
     }

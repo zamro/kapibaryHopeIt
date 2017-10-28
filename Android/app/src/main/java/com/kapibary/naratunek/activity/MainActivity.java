@@ -1,10 +1,8 @@
 package com.kapibary.naratunek.activity;
 
-import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -99,11 +97,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void generateNavigationItems() {
         navigationItems = new ArrayList<>();
-        navigationItems.add(new NavigationItem("Użytkownik", "Wrocław, Polska", 0)); //todo - localization - dynamic or from registration
         navigationItems.add(new NavigationItem("Wiadomości", "", R.drawable.icons8_message));
         navigationItems.add(new NavigationItem("Historia wpłat", "", R.drawable.icons8_payment_history));
         navigationItems.add(new NavigationItem("Ustawienia", "", R.drawable.icons8_settings));
-        navigationItems.add(new NavigationItem("TempPayment", "", 0));
+        navigationItems.add(new NavigationItem("Szybka Płatność", "", 0));
     }
 
     @Override
@@ -127,11 +124,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onOptionsItemSelected(item);
     }
 
-    private final ClickableFragment[] fragments = {null, new MessagesFragment(), new HistoryFragment(), null};
+    private final ClickableFragment[] fragments = {new MessagesFragment(), new HistoryFragment(), null};
     private void selectItemFromDrawer(int position) {
         Log.d("DRAWER", "" + position);
-        if(position == 4) {
-            Intent i = new Intent(this, TempActivity.class);
+        if(position == 3) {
+            Intent i = new Intent(this, PayUActivity.class);
             startActivity(i);
         }
         else

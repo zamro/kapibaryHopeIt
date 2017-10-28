@@ -25,8 +25,8 @@
         </activity>
         <activity android:name=".activity.MainActivity" />
         <activity
-            android:name=".activity.TempActivity"
-            android:label="Temp" />
+            android:name=".activity.PayUActivity"
+            android:label="Płatność" />
 
         <!--PayU activities-->
         <activity android:name="com.payu.android.sdk.payment.ui.NewCardActivity" />
